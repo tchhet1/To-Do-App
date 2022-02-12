@@ -1,20 +1,18 @@
-import React, { useState } from 'react';
-import TodoForm from './TodoForm.js';
+import React from 'react';
+import Todo from './Todo.js';
 
-function TodoList(){
-    const [todos, setTodos] = useState('[]');
+function TodoList({ todos, setTodos }){
 
-    const addTodo = (todo) => {
-        if(!todo.text) return;
-
-        const newTodos = [todo, ...todos];
-
-        setTodos(newTodos);
-        console.log(todo, ...todos);
-    }
-
+   
     return(
-        <TodoForm onSubmit={addTodo}/>
+        <React.Fragment>
+          <ul className="list-group">
+              {todos.map((todo) =>
+              <Todo text={todo.text} key={todo.id} todo={todo} todos={todos} setTodos={setTodos} />
+              )}
+          </ul>
+           
+        </React.Fragment>
     );
 }
 

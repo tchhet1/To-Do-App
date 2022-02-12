@@ -1,25 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function TodoForm(props) {
-    const [input, setInput] = useState('');
+function TodoForm({ input, setInput,  todos, setTodos}) {
 
-    const handleChange = e => {
+    const handleInput= e => {
         setInput(e.target.value);
     };
 
     const handleSubmit = e => {
         e.preventDefault();
-        props.onSubmit({
-            id: Math.floor(Math.random() * 10000),
-            text: input
-        })
+        if(!input) return;
+        setTodos([...todos,
+            {text: input, completed: false, id: Math.random() * 10000}
+        ]);
         setInput('');
     };
 
     return(
-        <form className="todo-form">
-            <input type="text" onChange={handleChange} placeholder="Add an item..." value={input} className="todo-input" name="text"/>
-            <button onClick={handleSubmit} className="todo-button" type="submit">
+        <form className="form-group">
+            <input type="text" onChange={handleInput} value = {input} placeholder="Add a to do..."  className="form-control" name="text"/>
+            <button onClick={handleSubmit} className="btn btn-success btn-md mt-3 mb-3" key = {todos.id} type="submit">
                 Add
             </button>
         </form>

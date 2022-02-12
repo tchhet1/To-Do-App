@@ -1,17 +1,27 @@
-import React, { useState } from 'react';
-import TodoForm from './TodoForm';
+import React from 'react';
+import { BsFillTrashFill } from "react-icons/bs";
+import { BsFillPencilFill } from "react-icons/bs";
 
 
-function Todo() {
-    const [edit, setEdit] = useState({
-        id: null,
-        value: '' 
-    })
-
+function Todo({text, todo, todos, setTodos}) {
     
-    return (  
-
-    );
+    const handleDeletion = () => {
+        setTodos(todos.filter((el) => el.id !== todo.id));
+       
+    }
+    return (
+        <div>
+            
+            <li className="list-group-item  d-flex justify-content-between align-items-center">{text}
+                <div>
+                    <button className="btn-edit"><BsFillPencilFill /></button>
+                    <button className="mr-1 btn-delete" onClick={handleDeletion}><BsFillTrashFill /></button>
+                </div>
+            </li>
+            
+             
+        </div>
+    )
 }
 
 export default Todo;
