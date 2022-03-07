@@ -10,7 +10,7 @@ function TodoForm({ input, setInput,  todos, setTodos}) {
         e.preventDefault();
         if(!input) return;
         setTodos([...todos,
-            {text: input, completed: false, id: Math.random() * 10000}
+            {text: input, completed: false, id: Math.random() * 10000, editing: false}
         ]);
         setInput('');
     };

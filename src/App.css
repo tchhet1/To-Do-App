@@ -1,6 +1,19 @@
 
-
+ul div {
+    margin-bottom: 10px;
+}
 .btn-delete, .btn-edit {
     background-color: #ffffff;
     border: white;
+    font-size: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.btn-delete {
+    color: rgb(233, 27, 27);
+}
+
+.btn-edit {
+    color: rgb(0, 38, 255);
 }
